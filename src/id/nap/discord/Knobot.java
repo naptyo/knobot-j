@@ -1,9 +1,17 @@
 package id.nap.discord;
 
-public class Knobot {
+import javax.security.auth.login.LoginException;
 
-	public static void main(String[] args) {
-		System.out.println("Hello, world!");
+import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDABuilder;
+
+public class Knobot {
+	
+	public static void main(String[] args) throws LoginException {
+		String token = "";
+		JDABuilder builder = new JDABuilder(AccountType.BOT);
+		builder.setToken(token);
+		builder.build();
 	}
 
 }
