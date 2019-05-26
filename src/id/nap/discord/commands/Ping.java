@@ -1,24 +1,28 @@
 package id.nap.discord.commands;
 
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Ping extends ListenerAdapter {
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+
+public class Ping extends Command {
+	private static final Logger logger = LogManager.getLogger(Ping.class);
+	
+	@Override
+	public void onCommand(MessageReceivedEvent event, String[] args) {
+		logger.info(
+				event.getAuthor().getName() 
+				+ " sent " 
+				+ event.getMessage().getContentDisplay()
+				+ " in "
+				+ event.getChannel().getName());
+		
+		sendMessage(event, "Pong!");
+	}
 
 	@Override
-	public void onMessageReceived(MessageReceivedEvent event) {
-		if (event.getAuthor().isBot()) {
-			return;
-		}
-		
-		if (event.getMessage().getContentRaw().equals("!ping")) {
-			event.getChannel().sendMessage("Pong!").queue();
-		}
-		
-		System.out.println("Message received: " 
-				+ event.getAuthor().getName()
-				+ " " 
-				+ event.getMessage().getContentDisplay());
+	public String getCommand() {
+		return "!ping";
 	}
 	
 }
