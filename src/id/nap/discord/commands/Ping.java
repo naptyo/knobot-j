@@ -10,9 +10,14 @@ public class Ping extends ListenerAdapter {
 		if (event.getAuthor().isBot()) {
 			return;
 		}
-
+		
+		if (event.getMessage().getContentRaw().equals("!ping")) {
+			event.getChannel().sendMessage("Pong!").queue();
+		}
+		
 		System.out.println("Message received: " 
 				+ event.getAuthor().getName()
+				+ " " 
 				+ event.getMessage().getContentDisplay());
 	}
 	
