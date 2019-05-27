@@ -1,5 +1,8 @@
 package id.nap.discord.commands;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Message;
@@ -7,8 +10,10 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public abstract class Command extends ListenerAdapter{
+	protected final static Logger LOGGER = LogManager.getLogger(Command.class);
 	
 	public abstract void onCommand(MessageReceivedEvent event, String[] args);
+	public abstract void logCommand(MessageReceivedEvent event, String[] args);
 	public abstract String getCommand();
 	
 	@Override
