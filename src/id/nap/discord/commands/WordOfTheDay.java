@@ -13,4 +13,9 @@ public class WordOfTheDay extends Command {
 	public String getCommand() {
 		return "!wotd";
 	}
+
+	@Override
+	public void logCommand(MessageReceivedEvent event, String[] args) {
+		
+	}
 }
