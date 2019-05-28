@@ -10,6 +10,9 @@ import net.dv8tion.jda.core.JDABuilder;
 
 public class Knobot {
 	
+	public static final int NO_CONFIG_FOUND = 501;
+	public static final int IO_ERROR = 502;
+	public static final int BAD_UNICODE_ESCAPE = 503;
 	public static final int NO_TOKEN_FOUND = 500;
 	
 	public static void main(String[] args) throws LoginException {
