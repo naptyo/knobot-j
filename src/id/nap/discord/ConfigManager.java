@@ -61,10 +61,6 @@ public class ConfigManager {
 			}
 		}
 		
-		if (!prop.isEmpty()) {
-			
-		}
-		
 		return new Config(prop.getProperty("discord_token"), prop.getProperty("calendar_key"));
 	}
 }
