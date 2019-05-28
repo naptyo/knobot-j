@@ -7,7 +7,6 @@ public class Date {
 	
 	public Date() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Date(String iso, Datetime datetime, Timezone timezone) {
@@ -15,6 +14,11 @@ public class Date {
 		this.iso = iso;
 		this.datetime = datetime;
 		this.timezone = timezone;
+	}
+
+	@Override
+	public String toString() {
+		return datetime.getDay()+"/"+datetime.getMonth()+"/"+datetime.getYear();
 	}
 
 	public String getIso() {
