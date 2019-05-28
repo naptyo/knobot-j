@@ -2,6 +2,8 @@ package id.nap.discord.commands;
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -39,15 +41,26 @@ public class Holiday extends Command {
 		if (dates.getResponse().getHolidays().size() > 0) {
 			MessageBuilder builder = new MessageBuilder();
 			
+			int i = 1;
+			
 			for (id.nap.discord.model.calendarific.Holiday holiday : dates.getResponse().getHolidays()) {
-				builder.append(holiday.getName() +" "+ holiday.getDate().toString() + "\n");
+				List<String> holidayType = Arrays.asList(holiday.getType());
+				
+				if (holidayType.contains("National holiday") || holidayType.contains("Observance")) {
+					if(holiday.getName().contains("Diwali")) {
+						continue;
+					}
+					
+					builder.append(i + ". " + holiday.getName() +" "+ holiday.getDate().toString() + "\n");
+					i++;
+				}
 			}
 			
 			sendMessage(event, builder.build());
 			return;
 		}
 		
-		sendMessage(event, "No holiday(s) in the month of " + new DateFormatSymbols().getMonths()[Integer.parseInt(args[2])-1] + ".");
+		sendMessage(event, "No holiday(s) in " + new DateFormatSymbols().getMonths()[Integer.parseInt(args[2])-1] + " " + args[1] + ".");
 	}
 
 	@Override
