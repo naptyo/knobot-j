@@ -1,7 +1,6 @@
 package id.nap.discord.commands;
 
 import java.text.DateFormatSymbols;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.ws.rs.client.Client;
@@ -27,11 +26,15 @@ public class Holiday extends Command {
 			url.append("?&api_key=" + key);
 			url.append("&country=ID");
 		} else {
-			sendMessage(event, "Unable to retrieve holiday(s).");
+			sendMessage(event, "Unable to retrieve data.");
 			return;
 		}
 		
 		Calendarific dates = getDates(url.toString(), args);
+		
+		if (dates == null) {
+			sendMessage(event, "Invalid arguments.");
+		}
 		
 		if (dates.getResponse().getHolidays().size() > 0) {
 			MessageBuilder builder = new MessageBuilder();
@@ -89,8 +92,6 @@ public class Holiday extends Command {
 			
 			baseTarget = baseTarget.queryParam("day", day);
 		}
-		
-		System.out.println(baseTarget.toString());
 		
 		return baseTarget
 				.request(MediaType.APPLICATION_JSON)
