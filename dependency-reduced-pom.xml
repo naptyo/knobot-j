@@ -30,6 +30,7 @@
               <transformers>
                 <transformer />
                 <transformer>
+                  <resource>/</resource>
                   <file>log4j2.xml</file>
                 </transformer>
                 <transformer>
