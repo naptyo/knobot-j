@@ -1,4 +1,4 @@
-package id.nap.discord.commands;
+package main.java.id.nap.discord.commands;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,21 +1,16 @@
-package id.nap.discord.commands;
+package main.java.id.nap.discord.commands;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class WordOfTheDay extends Command {
-
+public class Ping extends Command {
 	@Override
 	public void onCommand(MessageReceivedEvent event, String[] args) {
-		
+		logCommand(event, args);
+		sendMessage(event, "Pong!");
 	}
 
 	@Override
 	public String getCommand() {
-		return "!wotd";
-	}
-
-	@Override
-	public void logCommand(MessageReceivedEvent event, String[] args) {
-		
+		return "!ping";
 	}
 }

@@ -1,4 +1,4 @@
-package id.nap.discord.model.calendarific;
+package main.java.id.nap.discord.model.calendarific;
 
 public class Meta {
 	private int code;

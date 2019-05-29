@@ -1,4 +1,4 @@
-package id.nap.discord;
+package main.java.id.nap.discord;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Properties;
 
-import id.nap.discord.model.Config;
+import main.java.id.nap.discord.model.Config;
 
 public class ConfigManager {
 	private static ConfigManager instance;

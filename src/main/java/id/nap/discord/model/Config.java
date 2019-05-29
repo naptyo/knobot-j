@@ -1,4 +1,4 @@
-package id.nap.discord.model;
+package main.java.id.nap.discord.model;
 
 public class Config {
 	private String discordToken;

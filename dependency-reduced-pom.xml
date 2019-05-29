@@ -30,11 +30,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <resource>/</resource>
-                  <file>log4j2.xml</file>
-                </transformer>
-                <transformer>
-                  <mainClass>id.nap.discord.Knobot</mainClass>
+                  <mainClass>main.java.id.nap.discord.Knobot</mainClass>
                 </transformer>
               </transformers>
             </configuration>
