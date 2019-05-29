@@ -97,7 +97,7 @@ public class HolidayCommand extends Command {
 		WebTarget baseTarget = client.target(url);
 		
 		if (args.length == 1) {
-			baseTarget.queryParam("year", args[1]);
+			baseTarget = baseTarget.queryParam("year", LocalDateTime.now().getYear());
 		} else {
 			HolidayArguments arguments = filterArguments(args);
 			baseTarget = baseTarget.queryParam("year", arguments.getYear());
