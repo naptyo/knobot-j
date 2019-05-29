@@ -1,11 +1,11 @@
-package main.java.id.nap.discord;
+package id.nap.discord;
 
 import javax.security.auth.login.LoginException;
 
-import main.java.id.nap.discord.commands.PingCommand;
-import main.java.id.nap.discord.commands.HolidayCommand;
-import main.java.id.nap.discord.commands.WOTDCommand;
-import main.java.id.nap.discord.model.Config;
+import id.nap.discord.commands.HolidayCommand;
+import id.nap.discord.commands.PingCommand;
+import id.nap.discord.commands.WOTDCommand;
+import id.nap.discord.model.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 

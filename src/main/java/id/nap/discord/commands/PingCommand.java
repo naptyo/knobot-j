@@ -1,4 +1,4 @@
-package main.java.id.nap.discord.commands;
+package id.nap.discord.commands;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 

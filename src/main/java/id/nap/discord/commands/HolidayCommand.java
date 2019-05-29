@@ -1,4 +1,4 @@
-package main.java.id.nap.discord.commands;
+package id.nap.discord.commands;
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDateTime;
@@ -10,9 +10,9 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-import main.java.id.nap.discord.ConfigManager;
-import main.java.id.nap.discord.model.HolidayArguments;
-import main.java.id.nap.discord.model.calendarific.Calendarific;
+import id.nap.discord.ConfigManager;
+import id.nap.discord.model.HolidayArguments;
+import id.nap.discord.model.calendarific.Calendarific;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -43,7 +43,7 @@ public class HolidayCommand extends Command {
 			
 			int i = 1;
 			
-			for (main.java.id.nap.discord.model.calendarific.Holiday holiday : dates.getResponse().getHolidays()) {
+			for (id.nap.discord.model.calendarific.Holiday holiday : dates.getResponse().getHolidays()) {
 				List<String> holidayType = Arrays.asList(holiday.getType());
 				
 				if (holidayType.contains("National holiday") || holidayType.contains("Observance")) {
