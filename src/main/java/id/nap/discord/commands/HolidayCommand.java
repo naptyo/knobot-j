@@ -11,16 +11,16 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import main.java.id.nap.discord.ConfigManager;
+import main.java.id.nap.discord.model.HolidayArguments;
 import main.java.id.nap.discord.model.calendarific.Calendarific;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class Holiday extends Command {
+public class HolidayCommand extends Command {
 	private static final String ENDPOINT_URL = "https://calendarific.com/api/v2/holidays";
 	
 	@Override
 	public void onCommand(MessageReceivedEvent event, String[] args) {
-		logCommand(event, args);
 		StringBuilder url = new StringBuilder(ENDPOINT_URL);
 		String key = getCalendarKey();
 		
@@ -35,7 +35,7 @@ public class Holiday extends Command {
 		Calendarific dates = getDates(url.toString(), args);
 		
 		if (dates == null) {
-			sendMessage(event, "Invalid arguments.");
+			sendMessage(event, "Invalid argument(s).");
 		}
 		
 		if (dates.getResponse().getHolidays().size() > 0) {
@@ -68,42 +68,41 @@ public class Holiday extends Command {
 		return "!holidays";
 	}
 	
+	private HolidayArguments filterArguments(String args[]) {
+		HolidayArguments arguments = new HolidayArguments();
+		
+		switch (args.length) {
+			case 2:
+				arguments.setYear(Integer.parseInt(args[1]));
+				break;
+			case 3:
+				arguments.setYear(Integer.parseInt(args[1]));
+				arguments.setMonth(Integer.parseInt(args[2]));
+				break;
+			case 4:
+				arguments.setYear(Integer.parseInt(args[1]));
+				arguments.setMonth(Integer.parseInt(args[2]));
+				arguments.setYear(Integer.parseInt(args[3]));
+				break;
+			default:
+				arguments.setYear(LocalDateTime.now().getYear());
+				break;
+		}
+		
+		return arguments;
+	}
+	
 	private Calendarific getDates(String url, String[] args) {
 		Client client = ClientBuilder.newClient();
 		WebTarget baseTarget = client.target(url);
 		
 		if (args.length == 1) {
-			baseTarget = baseTarget.queryParam("year", LocalDateTime.now().getYear());
-		} 
-		
-		if (args.length >= 2) {
-			int year = Integer.parseInt(args[1]);
-			
-			if (year > 2049) {
-				return null;
-			}
-			
-			baseTarget = baseTarget.queryParam("year", year);
-		}
-		
-		if (args.length >= 3) {
-			int month = Integer.parseInt(args[2]);
-			
-			if (month < 1 || month > 12) {
-				return null;
-			}
-			
-			baseTarget = baseTarget.queryParam("month", month);
-		}
-		
-		if (args.length == 4) {
-			int day = Integer.parseInt(args[3]);
-			
-			if (day < 1 || day > 31) {
-				return null;
-			}
-			
-			baseTarget = baseTarget.queryParam("day", day);
+			baseTarget.queryParam("year", args[1]);
+		} else {
+			HolidayArguments arguments = filterArguments(args);
+			baseTarget = baseTarget.queryParam("year", arguments.getYear());
+			baseTarget = (arguments.getMonth() != 0) ? baseTarget.queryParam("month", arguments.getMonth()) : baseTarget;
+			baseTarget = (arguments.getDay() != 0) ? baseTarget.queryParam("day", arguments.getDay()) : baseTarget;
 		}
 		
 		return baseTarget

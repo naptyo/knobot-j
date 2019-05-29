@@ -22,11 +22,12 @@ public abstract class Command extends ListenerAdapter{
 		}
 		
 		if (isCommand(event.getMessage())) {
-			onCommand(event, commandArgs(event.getMessage()));
+			logCommand(event);
+			onCommand(event, commandArguments(event.getMessage()));
 		}
 	}
 	
-	protected void logCommand(MessageReceivedEvent event, String[] args) {
+	protected void logCommand(MessageReceivedEvent event) {
 		LOGGER.info(
 				event.getAuthor().getName()
 				+ " sent "
@@ -36,14 +37,14 @@ public abstract class Command extends ListenerAdapter{
 	}
 	
 	protected boolean isCommand(Message message) {
-		return getCommand().equalsIgnoreCase(commandArgs(message)[0]);
+		return getCommand().equalsIgnoreCase(commandArguments(message)[0]);
 	}
 	
-	protected String[] commandArgs(Message message) {
-		return commandArgs(message.getContentDisplay());
+	protected String[] commandArguments(Message message) {
+		return commandArguments(message.getContentDisplay());
 	}
 	
-	protected String[] commandArgs(String message) {
+	protected String[] commandArguments(String message) {
 		return message.split(" ");
 	}
 	

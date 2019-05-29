@@ -2,9 +2,9 @@ package main.java.id.nap.discord;
 
 import javax.security.auth.login.LoginException;
 
-import main.java.id.nap.discord.commands.Ping;
-import main.java.id.nap.discord.commands.Holiday;
-import main.java.id.nap.discord.commands.WordOfTheDay;
+import main.java.id.nap.discord.commands.PingCommand;
+import main.java.id.nap.discord.commands.HolidayCommand;
+import main.java.id.nap.discord.commands.WOTDCommand;
 import main.java.id.nap.discord.model.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -20,9 +20,9 @@ public class Knobot {
 		
 		JDABuilder builder = new JDABuilder(AccountType.BOT).setToken(config.getDiscordToken());
 		
-		builder.addEventListener(new Ping());
-		builder.addEventListener(new WordOfTheDay());
-		builder.addEventListener(new Holiday());
+		builder.addEventListener(new PingCommand());
+		builder.addEventListener(new WOTDCommand());
+		builder.addEventListener(new HolidayCommand());
 		
 		builder.build();
 	}
