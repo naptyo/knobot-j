@@ -8,6 +8,7 @@ import id.nap.discord.commands.WOTDCommand;
 import id.nap.discord.model.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.entities.Game;
 
 public class Knobot {
 	
@@ -23,6 +24,8 @@ public class Knobot {
 		builder.addEventListener(new PingCommand());
 		builder.addEventListener(new WOTDCommand());
 		builder.addEventListener(new HolidayCommand());
+		
+		builder.setGame(Game.playing("in 127.0.0.1"));
 		
 		builder.build();
 	}
