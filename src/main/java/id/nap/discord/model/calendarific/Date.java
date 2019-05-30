@@ -1,5 +1,7 @@
 package id.nap.discord.model.calendarific;
 
+import java.text.DateFormatSymbols;
+
 public class Date {
 	private String iso;
 	private Datetime datetime;
@@ -18,7 +20,12 @@ public class Date {
 
 	@Override
 	public String toString() {
-		return datetime.getDay()+"/"+datetime.getMonth()+"/"+datetime.getYear();
+		StringBuilder builder = new StringBuilder();
+		builder.append(datetime.getDay() + " ");
+		builder.append(new DateFormatSymbols().getMonths()[datetime.getMonth()-1] + " ");
+		builder.append(datetime.getYear());
+		
+		return builder.toString();
 	}
 
 	public String getIso() {
