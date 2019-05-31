@@ -30,7 +30,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>main.java.id.nap.discord.Knobot</mainClass>
+                  <mainClass>id.nap.discord.Knobot</mainClass>
                 </transformer>
               </transformers>
             </configuration>
