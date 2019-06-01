@@ -2,6 +2,7 @@ package id.nap.discord;
 
 import javax.security.auth.login.LoginException;
 
+import id.nap.discord.commands.ExchangeRateCommand;
 import id.nap.discord.commands.HolidayCommand;
 import id.nap.discord.commands.PingCommand;
 import id.nap.discord.commands.ShutDownCommand;
@@ -26,6 +27,7 @@ public class Knobot {
 		builder.addEventListener(new WOTDCommand());
 		builder.addEventListener(new HolidayCommand());
 		builder.addEventListener(new ShutDownCommand());
+		builder.addEventListener(new ExchangeRateCommand());
 		
 		builder.setGame(Game.playing("in 127.0.0.1"));
 		
