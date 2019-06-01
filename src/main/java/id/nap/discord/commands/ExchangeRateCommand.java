@@ -17,7 +17,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class ExchangeRateCommand extends Command {
 	private static final String TITLE = "Exchange Rate";
 	private static final String DESCRIPTION = "Latest (approximate) rate.";
-	private static final String FOOTER = "fetched from https://exchangeratesapi.io/";
+	private static final String FOOTER = "fetched from https://exchangeratesapi.io";
 	private static final String ENDPOINT_URL = "https://api.exchangeratesapi.io/latest?base=USD&symbols=IDR";
 	
 	@Override
@@ -38,8 +38,6 @@ public class ExchangeRateCommand extends Command {
 		embed.setColor(Color.green);
 		embed.setFooter(FOOTER, "https://exchangeratesapi.io/favicon.ico");
 		embed.setTimestamp(Instant.now());
-		
-		System.out.println(rate.getRates().getIDR());
 		
 		embed.addField(rate.getBase(), "1", true);
 		embed.addField("IDR", Long.toString(rate.getRates().getIDR()), true);
