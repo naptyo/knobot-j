@@ -60,6 +60,11 @@ public class HolidayCommand extends Command {
 	public String getCommand() {
 		return "!holidays";
 	}
+
+	@Override
+	public boolean isDisasbled() {
+		return false;
+	}
 	
 	private Message buildMessage(List<Holiday> holidays) {
 		EmbedBuilder embed = new EmbedBuilder();

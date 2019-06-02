@@ -12,4 +12,9 @@ public class PingCommand extends Command {
 	public String getCommand() {
 		return "!ping";
 	}
+
+	@Override
+	public boolean isDisasbled() {
+		return true;
+	}
 }

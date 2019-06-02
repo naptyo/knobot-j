@@ -13,4 +13,9 @@ public class WOTDCommand extends Command {
 	public String getCommand() {
 		return "!wotd";
 	}
+
+	@Override
+	public boolean isDisasbled() {
+		return false;
+	}
 }

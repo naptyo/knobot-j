@@ -29,6 +29,11 @@ public class ExchangeRateCommand extends Command {
 	public String getCommand() {
 		return "!kurs";
 	}
+
+	@Override
+	public boolean isDisasbled() {
+		return true;
+	}
 	
 	private Message buildMessage(XRate rate) {
 		EmbedBuilder embed = new EmbedBuilder();

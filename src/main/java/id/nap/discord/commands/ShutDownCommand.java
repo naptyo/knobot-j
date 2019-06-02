@@ -20,5 +20,10 @@ public class ShutDownCommand extends Command {
 	public String getCommand() {
 		return "!shutdown";
 	}
+
+	@Override
+	public boolean isDisasbled() {
+		return false;
+	}
 	
 }
