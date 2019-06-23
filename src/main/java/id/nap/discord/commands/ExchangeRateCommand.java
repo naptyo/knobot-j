@@ -31,8 +31,8 @@ public class ExchangeRateCommand extends Command {
 	}
 
 	@Override
-	public boolean isDisasbled() {
-		return true;
+	public boolean isDisabled() {
+		return false;
 	}
 	
 	private Message buildMessage(XRate rate) {

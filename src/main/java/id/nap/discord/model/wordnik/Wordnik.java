@@ -9,7 +9,7 @@ public class Wordnik {
 	private List<Definition> definitions;
 	private String publishDate;
 	private List<Example> examples;
-	private String ppd;
+	private String pdd;
 	private String note;
 	private String htmlExtra;
 	
@@ -18,7 +18,7 @@ public class Wordnik {
 	}
 
 	public Wordnik(String _id, String word, Provider contentProvider, List<Definition> definitions, String publishDate,
-			List<Example> examples, String ppd, String note, String htmlExtra) {
+			List<Example> examples, String pdd, String note, String htmlExtra) {
 		super();
 		this._id = _id;
 		this.word = word;
@@ -26,7 +26,7 @@ public class Wordnik {
 		this.definitions = definitions;
 		this.publishDate = publishDate;
 		this.examples = examples;
-		this.ppd = ppd;
+		this.pdd = pdd;
 		this.note = note;
 		this.htmlExtra = htmlExtra;
 	}
@@ -79,12 +79,12 @@ public class Wordnik {
 		this.examples = examples;
 	}
 
-	public String getPpd() {
-		return ppd;
+	public String getPdd() {
+		return pdd;
 	}
 
-	public void setPpd(String ppd) {
-		this.ppd = ppd;
+	public void setPdd(String pdd) {
+		this.pdd = pdd;
 	}
 
 	public String getNote() {

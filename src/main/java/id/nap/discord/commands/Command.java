@@ -12,7 +12,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public abstract class Command extends ListenerAdapter{
 	public abstract void onCommand(MessageReceivedEvent event, String[] args);
 	public abstract String getCommand();
-	public abstract boolean isDisasbled();
+	public abstract boolean isDisabled();
 	
 	protected final static Logger LOGGER = LogManager.getLogger(Command.class);
 	
@@ -22,7 +22,7 @@ public abstract class Command extends ListenerAdapter{
 			return;
 		}
 		
-		if (isCommand(event.getMessage()) && isDisasbled()) {
+		if (isCommand(event.getMessage()) && !isDisabled()) {
 			logCommand(event);
 			onCommand(event, commandArguments(event.getMessage()));
 		}

@@ -14,7 +14,7 @@ public class PingCommand extends Command {
 	}
 
 	@Override
-	public boolean isDisasbled() {
-		return true;
+	public boolean isDisabled() {
+		return false;
 	}
 }

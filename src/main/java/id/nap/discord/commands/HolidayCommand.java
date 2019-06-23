@@ -62,7 +62,7 @@ public class HolidayCommand extends Command {
 	}
 
 	@Override
-	public boolean isDisasbled() {
+	public boolean isDisabled() {
 		return false;
 	}
 	
