@@ -61,6 +61,6 @@ public class ConfigManager {
 			}
 		}
 		
-		return new Config(prop.getProperty("discord_token"), prop.getProperty("calendar_key"));
+		return new Config(prop.getProperty("discord_token"), prop.getProperty("calendar_key"), prop.getProperty("wordnik_key"));
 	}
 }
